@@ -56,8 +56,6 @@ _ReSharper*/
 # Office Temp Files
 ~$*
 
-
-
 #ncrunch
 *ncrunch*
 *crunch*.local.xml
@@ -67,3 +65,6 @@ _ReSharper*/
 
 #Test files
 *.testsettings
+
+#Packages
+packages/**. *
