@@ -67,4 +67,4 @@ _ReSharper*/
 *.testsettings
 
 #Packages
-packages/**. *
+packages/**.*
