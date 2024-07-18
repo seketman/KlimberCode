@@ -22,7 +22,7 @@ namespace DevelopmentChallenge.Data.Tests
         }
 
         [Test]
-        public void TestResumenListaVacia()
+        public void TestResumenListaVaciaEnEspaniol()
         {
             Assert.AreEqual("<h1>Lista vacía de formas!</h1>",
                 ReporteFormas.Imprimir(formasGeometricas, resManager, new CultureInfo("es-AR")));
@@ -33,6 +33,13 @@ namespace DevelopmentChallenge.Data.Tests
         {
             Assert.AreEqual("<h1>Empty list of shapes!</h1>",
                 ReporteFormas.Imprimir(new List<FormaGeometrica>(), resManager, new CultureInfo("en-US")));
+        }
+
+        [Test]
+        public void TestResumenListaVaciaFormasEnPortugues()
+        {
+            Assert.AreEqual("<h1>Lista de formas vazia!</h1>",
+                ReporteFormas.Imprimir(new List<FormaGeometrica>(), resManager, new CultureInfo("pt-BR")));
         }
 
         [Test]
@@ -60,24 +67,7 @@ namespace DevelopmentChallenge.Data.Tests
         }
 
         [Test]
-        public void TestResumenListaConMasTipos()
-        {
-            formasGeometricas.Add(new Cuadrado(5));
-            formasGeometricas.Add(new Circulo(3));
-            formasGeometricas.Add(new TrianguloEquilatero(4));
-            formasGeometricas.Add(new Cuadrado(2));
-            formasGeometricas.Add(new TrianguloEquilatero(9));
-            formasGeometricas.Add(new Circulo(2.75m));
-            formasGeometricas.Add(new TrianguloEquilatero(4.2m));
-
-            var reporte = ReporteFormas.Imprimir(formasGeometricas, resManager, new CultureInfo("en-US"));
-            Assert.AreEqual(
-                "<h1>Shapes report</h1>2 Squares | Area 29 | Perimeter 28 <br/>2 Circles | Area 52,03 | Perimeter 36,13 <br/>3 Triangles | Area 49,64 | Perimeter 51,6 <br/>TOTAL:<br/>7 shapes | Perimeter 115,73 | Area 130,67",
-                reporte);
-        }
-
-        [Test]
-        public void TestResumenListaConMasTiposEnCastellano()
+        public void TestResumenListaConMasTiposEnEspaniol()
         {
             formasGeometricas.Add(new Cuadrado(5));
             formasGeometricas.Add(new Circulo(3));
@@ -93,6 +83,22 @@ namespace DevelopmentChallenge.Data.Tests
                 reporte);
         }
 
+        [Test]
+        public void TestResumenListaConMasTiposEnIngles()
+        {
+            formasGeometricas.Add(new Cuadrado(5));
+            formasGeometricas.Add(new Circulo(3));
+            formasGeometricas.Add(new TrianguloEquilatero(4));
+            formasGeometricas.Add(new Cuadrado(2));
+            formasGeometricas.Add(new TrianguloEquilatero(9));
+            formasGeometricas.Add(new Circulo(2.75m));
+            formasGeometricas.Add(new TrianguloEquilatero(4.2m));
+
+            var reporte = ReporteFormas.Imprimir(formasGeometricas, resManager, new CultureInfo("en-US"));
+            Assert.AreEqual(
+                "<h1>Shapes report</h1>2 Squares | Area 29 | Perimeter 28 <br/>2 Circles | Area 52,03 | Perimeter 36,13 <br/>3 Triangles | Area 49,64 | Perimeter 51,6 <br/>TOTAL:<br/>7 shapes | Perimeter 115,73 | Area 130,67",
+                reporte);
+        }
 
         [Test]
         public void TestCalcularAreaCuadrado()
@@ -159,7 +165,7 @@ namespace DevelopmentChallenge.Data.Tests
         }
 
         [Test]
-        public void TestImprimirReporte()
+        public void TestImprimirReporteEnEspaniol()
         {
             formasGeometricas.Add(new Cuadrado(5));
             formasGeometricas.Add(new TrianguloEquilatero(5));
@@ -190,6 +196,23 @@ namespace DevelopmentChallenge.Data.Tests
             Assert.IsTrue(reporte.Contains("1 Circle | Area 78,54 | Perimeter 31,42 <br/>"));
             Assert.IsTrue(reporte.Contains("1 Right Trapezoid | Area 25 | Perimeter 20,39 <br/>"));
             Assert.IsTrue(reporte.Contains("TOTAL:<br/>4 shapes | Perimeter 86,8 | Area 139,37"));
+        }
+
+        [Test]
+        public void TestImprimirReporteEnPortugues()
+        {
+            formasGeometricas.Add(new Cuadrado(5));
+            formasGeometricas.Add(new TrianguloEquilatero(5));
+            formasGeometricas.Add(new Circulo(5));
+            formasGeometricas.Add(new TrapecioRectangulo(6, 4, 5));
+
+            var reporte = ReporteFormas.Imprimir(formasGeometricas, resManager, new CultureInfo("pt-BR"));
+            Assert.IsTrue(reporte.Contains("<h1>Relatório de Formas</h1>"));
+            Assert.IsTrue(reporte.Contains("1 Quadrado | Área 25 | Perímetro 20 <br/>"));
+            Assert.IsTrue(reporte.Contains("1 Triângulo | Área 10,83 | Perímetro 15 <br/>"));
+            Assert.IsTrue(reporte.Contains("1 Círculo | Área 78,54 | Perímetro 31,42 <br/>"));
+            Assert.IsTrue(reporte.Contains("1 Trapézio Retângulo | Área 25 | Perímetro 20,39 <br/>"));
+            Assert.IsTrue(reporte.Contains("TOTAL:<br/>4 formas | Perímetro 86,8 | Área 139,37"));
         }
     }
 }
