@@ -3,11 +3,11 @@ using System.Resources;
 
 namespace DevelopmentChallenge.Data.Classes
 {
-    public class Cuadrado : FormaGeometrica
+    public class Cuadrado : Cuadrilatero
     {
         private readonly decimal _lado;
 
-        public Cuadrado(decimal lado)
+        public Cuadrado(decimal lado) : base(lado, lado, lado, lado)
         {
             _lado = lado;
         }
@@ -15,11 +15,6 @@ namespace DevelopmentChallenge.Data.Classes
         public override decimal CalcularArea()
         {
             return _lado * _lado;
-        }
-
-        public override decimal CalcularPerimetro()
-        {
-            return _lado * 4;
         }
 
         public override string TraducirForma(int cantidad, ResourceManager resManager, CultureInfo cultura)

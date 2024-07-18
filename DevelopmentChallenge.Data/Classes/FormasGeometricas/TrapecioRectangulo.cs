@@ -4,13 +4,14 @@ using System;
 
 namespace DevelopmentChallenge.Data.Classes
 {
-    public class TrapecioRectangulo : FormaGeometrica
+    public class TrapecioRectangulo : Cuadrilatero
     {
         private readonly decimal _baseMayor;
         private readonly decimal _baseMenor;
         private readonly decimal _altura;
 
         public TrapecioRectangulo(decimal baseMayor, decimal baseMenor, decimal altura)
+            : base(baseMayor, baseMenor, altura, (decimal)Math.Sqrt((double)(altura * altura + (baseMayor - baseMenor) * (baseMayor - baseMenor))))
         {
             _baseMayor = baseMayor;
             _baseMenor = baseMenor;
@@ -20,12 +21,6 @@ namespace DevelopmentChallenge.Data.Classes
         public override decimal CalcularArea()
         {
             return ((_baseMayor + _baseMenor) / 2) * _altura;
-        }
-
-        public override decimal CalcularPerimetro()
-        {
-            decimal lado = (decimal)Math.Sqrt((double)(_altura * _altura + (_baseMayor - _baseMenor) * (_baseMayor - _baseMenor)));
-            return _baseMayor + _baseMenor + _altura + lado;
         }
 
         public override string TraducirForma(int cantidad, ResourceManager resManager, CultureInfo cultura)

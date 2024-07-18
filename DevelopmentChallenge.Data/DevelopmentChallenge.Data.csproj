@@ -48,6 +48,7 @@
     <Compile Include="Classes\FormasGeometricas\Cuadrado.cs" />
     <Compile Include="Classes\FormaGeometrica.cs" />
     <Compile Include="Classes\FormaGeometricaFactory.cs" />
+    <Compile Include="Classes\FormasGeometricas\Cuadrilatero.cs" />
     <Compile Include="Classes\IFormaGeometrica.cs" />
     <Compile Include="Classes\ReporteFormas.cs" />
     <Compile Include="Classes\FormasGeometricas\TrapecioRectangulo.cs" />
